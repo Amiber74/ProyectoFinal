@@ -1,0 +1,153 @@
+[{
+  "owner": "rojasfacundo2002@gmailcom",
+  "title": "televisor",
+  "description": "Tv Smart 24'",
+  "price": 2,
+  "code": "d7605e09-0e66-4b7d-acb4-8612ee8af402",
+  "thumbnail": "default.jpg",
+  "stock": 20
+},
+{
+  "owner": "admin",
+  "title": "Samsung Galaxy S23 Ultra Smartphone",
+  "description": "The latest Samsung smartphone with an incredible camera, a large display, and powerful performance",
+  "price": 1199,
+  "code": "cccb03f8-b1b7-4df3-a83b-ba05372f218a",
+  "thumbnail": "default.jpg",
+  "stock": 15
+},
+{
+  "owner": "admin",
+  "title": "Dell XPS 13 Plus Laptop",
+  "description": "A sleek and lightweight laptop with a touchscreen and a long-lasting battery",
+  "price": 1999,
+  "code": "cf78c858-e539-4f2a-81c7-a1831324ad0d",
+  "thumbnail": "default.jpg",
+  "stock": 12
+},
+{
+  "owner": "admin",
+  "title": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones",
+  "description": "Industry-leading noise cancellation, Bluetooth 50 connectivity, and up to 30 hours of battery life",
+  "price": 399,
+  "code": "e53dc323-5e6f-44cc-acfb-2704b2568b28",
+  "thumbnail": "default.jpg",
+  "stock": 20
+},
+{
+  "owner": "admin",
+  "title": "Apple Watch Series 8 Smartwatch",
+  "description": "The latest Apple smartwatch with new health and fitness features, a larger display, and a more durable design",
+  "price": 399,
+  "code": "927f826d-45a1-48fb-a242-6d83c2adcf4b",
+  "thumbnail": "default.jpg",
+  "stock": 18
+},
+{
+  "owner": "admin",
+  "title": "Samsung Galaxy Tab S8 Ultra Tablet",
+  "description": "A large and powerful tablet with a beautiful AMOLED display and an S Pen included",
+  "price": 1199,
+  "code": "cb2e64dc-0647-4b0e-94dc-4d3283ed54db",
+  "thumbnail": "default.jpg",
+  "stock": 10
+},
+{
+  "owner": "admin",
+  "title": "Canon EOS R6 Mark II DSLR Camera",
+  "description": "A high-end DSLR camera with a full-frame sensor and a fast, accurate autofocus system",
+  "price": 2499,
+  "code": "81f7ea7f-5027-4e1c-9658-6eb34ad982a9",
+  "thumbnail": "default.jpg",
+  "stock": 8
+},
+{
+  "owner": "admin",
+  "title": "DJI Mavic 3 Drone",
+  "description": "A foldable and portable drone with a high-resolution camera and a flight time of up to 46 minutes",
+  "price": 1599,
+  "code": "fed56d2e-859b-474d-a6b0-ee673a99f2d7",
+  "thumbnail": "default.jpg",
+  "stock": 16
+},
+{
+  "owner": "admin",
+  "title": "LG C2 OLED TV",
+  "description": "An OLED TV with an incredibly sharp and black picture, perfect for watching movies and playing video games",
+  "price": 1999,
+  "code": "c4e48203-473c-4aad-b62d-54f5ac11594c",
+  "thumbnail": "default.jpg",
+  "stock": 25
+},
+{
+  "owner": "admin",
+  "title": "Sony PlayStation 5 Video Game Console",
+  "description": "The latest video game console from Sony with powerful graphics, exclusive games, and an innovative DualSense controller",
+  "price": 499,
+  "code": "f04be557-1144-4d14-b3aa-86874d0e4a77",
+  "thumbnail": "default.jpg",
+  "stock": 10
+},
+{
+  "owner": "admin",
+  "title": "Google Nest Hub Max Smart Speaker",
+  "description": "A smart display that lets you control your smart home, watch videos, and listen to music",
+  "price": 229,
+  "code": "84a29ada-dc8e-42b4-a993-2a3ed25dd321",
+  "thumbnail": "default.jpg",
+  "stock": 20
+},
+{
+  "owner": "admin",
+  "title": "Microsoft Surface Laptop Studio",
+  "description": "A 2-in-1 laptop that can be used as a laptop, tablet, or tent",
+  "price": 1499,
+  "code": "eb6475cc-2019-499d-81d0-95fb65f504bb",
+  "thumbnail": "default.jpg",
+  "stock": 15
+},
+{
+  "owner": "admin",
+  "title": "Apple AirPods Pro Wireless Earbuds",
+  "description": "Active noise cancellation, Transparency mode, and a comfortable fit",
+  "price": 249,
+  "code": "e9460b70-d0cb-4a06-8e94-154fdce44016",
+  "thumbnail": "default.jpg",
+  "stock": 22
+},
+{
+  "owner": "admin",
+  "title": "Google Pixel 6 Pro Smartphone",
+  "description": "A powerful smartphone with a unique design, a great camera, and long battery life",
+  "price": 899,
+  "code": "ab8cdfe2-e83d-4077-9c18-681553e56920",
+  "thumbnail": "default.jpg",
+  "stock": 12
+},
+{
+  "owner": "admin",
+  "title": "Fitbit Sense Smartwatch",
+  "description": "Advanced health and fitness tracking, ECG, and stress management",
+  "price": 299,
+  "code": "c42ec55c-60b5-4ac0-b840-ee1cc9da0735",
+  "thumbnail": "default.jpg",
+  "stock": 18
+},
+{
+  "owner": "admin",
+  "title": "Sony WF-1000XM4 Wireless Noise Cancelling Earbuds",
+  "description": "Industry-leading noise cancellation, Bluetooth 51 connectivity, and up to 8 hours of battery life",
+  "price": 279,
+  "code": "3d51e2e4-d149-47db-a2ad-8a105f135104",
+  "thumbnail": "default.jpg",
+  "stock": 20
+},
+{
+  "owner": "admin",
+  "title": "Microsoft Xbox Series X Video Game Console",
+  "description": "The most powerful Xbox console ever with stunning graphics, fast loading times, and a wide range of games",
+  "price": 499,
+  "code": "3f35d368-5103-4f74-a12d-7868cc0bfe77",
+  "thumbnail": "default.jpg",
+  "stock": 14
+}]

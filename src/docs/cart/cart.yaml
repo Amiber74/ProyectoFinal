@@ -1,0 +1,46 @@
+paths:
+  /api/cart/addProduct/:Pid:
+    post:
+      summary: Agregar producto al carrito del usuario
+      tags:
+        - Cart
+        - Products
+      parameters:
+        - name: Pid
+          in: path
+          required: true
+          type: String
+          description: Id de producto
+        - name: Cid
+          in: body
+          required: true
+          type: String
+          description: Id del carrito
+      responses:
+        "200":
+          description: Agrega el producto al carrito del usuario
+        "401": 
+          description: Error de las funciones para agregar los productos. Posibles causas falta de informacion (Id de producto y Id de carrito)
+
+  /api/cart/dele/:Pid:
+    post:
+      summary: Eliminar producto del carrito del usuario
+      tags: 
+        - Cart
+        - Products
+      parameters:
+        - name: Pid
+          in: path
+          required: true
+          type: String
+          description: Id de producto
+        - name: Cid
+          in: body
+          required: true
+          type: String
+          description: Id del carrito
+      responses: 
+        "200":
+          description: Correcta eliminacion del producto dentro del carrito
+        "401":
+          description: Error de las funciones para eliminar el producto del carrito, las posibles causas son falta de informacion (Id de carrito y Id de producto)

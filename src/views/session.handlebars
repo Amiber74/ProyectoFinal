@@ -1,0 +1,47 @@
+
+<h1 style="text-decoration: underline; text-align:center">Home</h1>
+
+<div class="Session" style="display: grid; grid-template-columns: 1fr 1fr; margin-inline: 15%; padding: 5%">
+
+    <div class="Login" style="display: grid; grid-template-rows: 1fr 1fr; ">
+        <form action="http://localhost:8080/api/user/login" method="post">
+            <fieldset  style="display: grid; grid-template-rows: 1fr 1fr 1fr;">
+                <legend><h3>Inicio de Sesion</h3></legend>
+                <input type="text" name="email" id="email" placeholder="email..." required="true">
+                <input type="password" name="password" id="password" placeholder="***" required="true">
+                <input type="submit" value="Iniciar Sesion">
+            </fieldset>
+        </form>
+
+        <a href="/changePass">
+            <button>Olvide la contraseña</button>
+        </a>
+    </div>
+
+    <div class="Register" style="display: grid; grid-template-row: 1fr 1fr;">
+        <form action="http://localhost:8080/api/user/register" method="post">
+            <fieldset   style="display: grid; grid-template-rows: repeat(6, 1fr);">
+                <legend><h3>Nuevo usuario</h3></legend>
+                <input type="text" name="firstName" placeholder="First Name" required="true">
+                <input type="text" name="lastName" placeholder="Last Name" required="true">
+                <input type="text" name="email" placeholder="email" required="true">
+                <input type="password" name="password" placeholder="password" required="true">
+                <input type="tel" name="phone" id="phone" placeholder="phone">
+                <input type="submit" value="Crear Cuenta">
+            </fieldset>
+        </form>
+
+        <div class="buttons" style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+            <a href="/api/user/auth/github">
+                <img src="https://static.vecteezy.com/system/resources/previews/016/833/872/original/github-logo-git-hub-icon-on-white-background-free-vector.jpg" alt="Logo de github" style="width:40px; height:40px; border-radius:50%">
+            </a>
+            <a href="/api/user/auth/google">
+                <img src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-pks9lbdv.png" alt="Logo de google" style="width:40px; height:40px; border-radius:50%">
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+

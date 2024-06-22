@@ -1,0 +1,15 @@
+<h1>Cambio de Contraseña</h1>
+{{#if status}}
+    <form action="/api/user/changePass" method="post">
+        <input type="email" name="emailUser" id="emailUser" placeholder="email">
+        <input type="password" name="newPassword" id="newPassword" placeholder="Nueva contraseña">
+        <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repita la contraseña">
+        <input type="submit" value="Cambiar contraseña">
+    </form>
+{{else}}
+    <form action="/api/user/sendEmail" method="post">
+        <label for="email"> Ingrese su correo</label>
+        <input type="email" name="email" id="email" placeholder="email">
+        <input type="submit" value="Enviar Email">
+    </form>
+{{/if}}

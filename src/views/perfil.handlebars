@@ -1,0 +1,87 @@
+<div class="perfil" style="display: grid; grid-template-columns: 110px 1fr; ">
+    <img src="{{user.avatar}}" alt="Foto de perfil"  height="100px" width="100px"  style="border-radius:50%">
+    <h1>{{time}} {{user.fullName}}</h1>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr">
+    <form action="http://localhost:8080/api/user/profile" method="post" enctype="multipart/form-data" style="margin:10px">
+        <fieldset>
+            <legend for="avatar"> <h3> Sube o cambia tu foto de perfil </h3></legend>
+            <input type="file" name="avatar" required="true">
+            <br>
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+    <form action="http://localhost:8080/api/user/document" method="post" enctype="multipart/form-data" style="margin:10px">
+        <fieldset>
+            <legend for="document"> <h3> Sube el o los documentos que necesites </h3></legend>
+            <input type="file" name="document" required="true" multiple>
+            <br>
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+
+</div>
+
+
+<div class="buttons" style="display: grid; grid-template-columns:1fr 1fr 1fr">
+    <form action="http://localhost:8080/api/user/updateRole" method="post" style="margin: 10px">
+        <input type="hidden" name="email" id:"email", value={{user.email}}>
+        <input type="submit" value="Volverse Premium">
+    </form>
+
+    <form action="http://localhost:8080/" method="get" style="margin: 10px">
+        <input type="submit" value="Volver">
+    </form>
+
+    <form action="http://localhost:8080/api/user/logout" method="get" style="margin: 10px">
+        <input type="submit" value="logout">
+    </form>
+</div>
+
+
+{{#if statusProd.create }}
+    <div class="CreateProduct">
+        <form action="http://localhost:8080/api/product/newProduct" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend> <h2>Crear Producto</h2> </legend>
+                    <input type="text" name="title" id="title" placeholder="title" required="true">
+                    <input type="text" name="description" id="description" placeholder="description" required="true">
+                    <input type="number" name="price" id="price" placeholder="price" required="true">
+                    <input type="file" name="thumbnail" id="thumbnail" placeholder="Imagen">
+                    <input type="number" name="stock" id="stock" placeholder="stock" required="true">
+                    <input type="submit" value="new product" >
+            </fieldset>
+        </form>
+    </div>
+{{/if}}
+
+{{#if statusProd.update}}
+    <div class="UpdateProduct">
+        <form action="http://localhost:8080/api/product/updateProduct" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend><h2>Actualiza Producto</h2></legend>
+                <input type="text" name="code" id="code" required="true" placeholder="Codigo del producto">
+                <br>
+                <p>Solo llene el campo que desee cambiar</p>
+                <input type="text" name="title" id="title" placeholder="title">
+                <input type="text" name="description" id="description" placeholder="description">
+                <input type="number" name="price" id="price" placeholder="price">
+                <input type="file" name="thumbnail" id="thumbnail" placeholder="Imagen">
+                <input type="number" name="stock" id="stock" placeholder="stock">
+                <input type="submit" value="update product">
+            </fieldset>
+        </form>
+    </div>
+{{/if}}
+{{#if statusProd.delete}}
+    <div class="DeleteProduct">
+        <form action="http://localhost:8080/api/product/deleteProduct" method="post">
+            <fieldset>
+                <legend><h2>Eliminar Producto</h2></legend>
+                <input type="text" name="code" id="code" placeholder="Codigo del producto">
+                <input type="submit" value="delete product">
+            </fieldset>
+        </form>
+    </div>
+{{/if}}

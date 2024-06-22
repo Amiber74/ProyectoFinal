@@ -1,0 +1,31 @@
+<h1 style="text-decoration:underline; text-align:center">Tu carrito</h1>
+
+<form action="http://localhost:8080/" method="get" style="margin: 10px">
+    <input type="submit" value="Volver">
+</form>
+
+{{#if cart}}
+
+    <div class="container" style="display: grid; grid-template-columns:repeat(4,1fr); text-align:center; gap:5px">
+        {{#each cart as |product|}}
+            <div class="Card" style="border:1px solid black; padding:5px; border-radius: 15px;">
+                <h4> {{this.product.title}} &nbsp;</h4>
+                <img src="/img/products/{{this.product.thumbnail}}" alt="Imagen del producto {{this.product.title}}" height="300px" width="250px" >
+                <p>{{this.product.description}}</p>
+                <p> {{this.quantity}} x $ {{this.product.price}} &nbsp;</p>
+
+                <form action="http://localhost:8080/api/cart/{{this.product._id}}" method="post" style="margin: 10px">
+                    <input type="submit" value="Eliminar del carrito">
+                </form>
+            </div>  
+        {{/each}}
+    </div>
+
+{{else}}
+    <h2>Sin productos en el carrito</h2>
+{{/if}}
+
+<form action="http://localhost:8080/api/ticket/purchase" method="post" style="margin: 10px">
+    <input type="hidden" name="Uid" value="{{user}}">
+    <input type="submit" value="Finalizar Compra">
+</form>

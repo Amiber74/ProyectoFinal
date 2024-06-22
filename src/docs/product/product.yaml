@@ -1,0 +1,103 @@
+paths:
+  /api/product/newProduct:
+    post: 
+      summary: Crear producto y subirlo a la base de datos
+      tags: 
+        - Products
+        - Users
+      parameters:
+        - name: thumbnail
+          in: file
+          required: false
+          type: string
+          description: Imagen del producto
+        - name: title
+          in: body
+          required: true
+          type: string
+          description: Titulo del producto
+        - name: description
+          in: body
+          required: true
+          type: string
+          description: Descripcion del producto
+        - name: price
+          in: body
+          required: true
+          type: number
+          description: Precio del producto
+        - name: stock
+          in: body
+          required: true
+          type: number
+          description: Stock del producto
+      responses: 
+        "201":
+          description: Crea exitosamente el producto y luego redirige a la ruta principal '/home'
+        "401": 
+          decription: Error al crear el producto, las causas posibles son no contar con el role admin,  falta de informacion del producto o algun error del archivo productServices.js. Redirige al perfil del usuario '/profile' 
+
+  /api/product/deleteProduct:
+    post:
+      summary: Elimina un producto
+      tags:
+        - Products
+        - Users
+      parameters:
+      - name: code
+        in: body
+        required: true
+        type: string
+        description: Codigo del producto
+      - name: Uid
+        in: session
+        required: true
+        type: string
+        description: Id del usuario
+      responses:
+        "204": 
+          description: Elimina el producto correctamente y luego redirige a la ruta principal '/home'
+        "401": 
+          description: Error al eliminar producto, las causas posibles son no contar con el role premium o admin y en el caso de los premiums el producto no lo crearon estos mismos. Redirige a la ruta '/profile'
+
+  /api/product/updateProduct:
+    post:
+      summary: Actualiza un producto
+      tags:
+        - Products
+      parameters:
+        - name: code
+          in: body
+          required: true
+          type: string
+          description: Codigo del producto
+        - name: thumbnail
+          in: file
+          required: false
+          type: string
+          description: Imagen del producto
+        - name: title
+          in: body
+          required: false
+          type: string
+          description: Titulo del producto
+        - name: description
+          in: body
+          required: false
+          type: string
+          description: Descripcion del producto
+        - name: price
+          in: body
+          required: false
+          type: number
+          description: Precio del producto
+        - name: stock
+          in: body
+          required: false
+          type: number
+          description: Stock del producto
+      responses: 
+        "200": 
+          description: Actualiza el campo de informacion del producto que se especifique y luego redirige a la ruta '/profile'
+        "401":
+          description: Error al actualizar el producto, las posibles causas puede ser un codigo no existente o no haber llenado ningun campo de informacion. Luego redirige a la ruta '/profile'

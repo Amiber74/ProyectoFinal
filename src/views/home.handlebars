@@ -1,0 +1,40 @@
+<h1 style="text-decoration:underline; text-align:center"> Tienda </h1>
+
+<form action="http://localhost:8080/session" method="get"  style="margin: 10px">
+    <input type="submit" value="Iniciar Sesion">
+</form>
+
+{{#if userLogin}}
+    <form action="http://localhost:8080/profile" method="get" style="margin: 10px" >
+        <input type="submit" value="Mi perfil">
+    </form>
+
+    <form action="http://localhost:8080/cart" method="get" style="margin: 10px">
+        <input type="submit" value="Carrito">
+    </form>
+{{/if}}
+
+
+{{#if Products}}
+    <div class="container" style="display: grid; grid-template-columns:repeat(4,1fr); text-align:center; gap:5px">
+        {{#each Products as |product|}}
+            <div class="Card" style="border:1px solid black; padding:5px; border-radius: 15px;">
+                
+                <h4> {{product.title}} </h4>
+                <img src="/img/products/{{product.thumbnail}}" alt="Imagen del producto {{product.title}}" height="300px" width="250px" >
+                <p> {{product.description}} </p>
+                <p> $ {{product.price}} </p>
+
+                <form action="http://localhost:8080/api/cart/addproduct/{{product._id}}" method="post">
+                    <input type="hidden" name="email" value="{{product.email}}">
+                    <input type="number" name="quantity" id="quantity" min="1">
+                    <input type="submit" value="Agregar carrito">
+                </form>
+
+            </div>  
+        {{/each}}
+    </div>
+
+{{else}}
+    <h2>Sin productos en el servidor</h2>
+{{/if}}

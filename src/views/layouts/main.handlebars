@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    {{#if msg}}
+        <div style="display: grid; place-items:center;border: 1px solid rgba(95, 95, 95, 0.555); background-color:{{backgrounColor}}">
+            <p style="font-size:1rem"> {{msg}} </p>
+        </div>
+    {{/if}}
+    {{{body}}}
+</body>

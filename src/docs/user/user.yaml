@@ -1,0 +1,245 @@
+paths: 
+  /api/user/login:
+    post:
+      summary: Inicio de sesion del usuario
+      tags: 
+        - Users
+      parameters:
+        - name: email
+          in: body
+          required: true
+          type: string
+          description: Email del usuario
+        - name: password
+          in: body
+          required: true
+          type: string
+          description: contraseña del usuario
+      responses: 
+        "200": 
+          description: Correcto inicio de sesion y redireccion a '/home'
+        "401":
+          description: Error al iniciar sesion, posibles causas son Contraseña o email incorrectos, no esta registrado el usuario y luego redirige a la ruta '/session'
+
+  /api/user/register:
+    post:
+      summary:  Registro de usuario
+      tags:
+        - Users
+      parameters:
+        - name: firstName
+          in: body
+          required: true
+          type: string
+          description: Nombre del usuario
+        - name: lastName
+          in: body
+          required: true
+          type: string
+          description: Apellido del usuario
+        - name: email
+          in: body
+          required: true
+          type: string
+          description: email del usuario
+        - name: password
+          in: body
+          required: true
+          type: string
+          description: contraseña del usuario
+        - name: phone
+          in: body
+          required: false
+          type: string
+          description: telefono del usuario
+      responses:
+        "200":
+          description: Registro de usuario exitoso, se lo redirige a la ruta '/session' para que inicie sesion para validar la correcta carga de datos
+        "401":
+          description: Error en el registro, las posibles causas pueden ser email ya existente, falta de informacion (telefono opcional) y luego se le redirige a la ruta '/session'
+        
+
+  /api/user/logout: 
+    get:
+      summary: Elimina la sesion del usuario registrado
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Actualiza el campo del usuario 'lastConnection' con la fecha actual, elimina la sesion del usuario y redirige a la ruta '/home'
+        "400":
+          description: Error al eliminar la sesion, crea un mensaje de error y redirige a la ruta '/profile'
+
+
+  /api/user/current:
+    get: 
+      summary: Obtiene informacion del usuario logueado
+      tags:
+        - Users
+      responses: 
+        "200":
+          description: Envia la informacion del usuario 
+        "400": 
+          description: Error al obtener informacion del usuario, envia informacion del error producido
+
+
+  /api/user/updateRole:
+    post: 
+      summary: Cambia el rol de un usuario a premium y viceversa
+      tags:
+        - Users
+      responses:
+        "200": 
+          description: Exito al obtener informacion del usuario y cambiar el rol del usuario. Redirige a la ruta "/profile"
+        "400":
+          description: Error al obtener informacion del usuario y en cambiar el rol del usuario. Este error puede producirse por un error en el registro del usuario o un error interno de las funciones de userServices redirige a la ruta '/profile'
+
+
+  /api/user/changePass:
+    post:
+      summary: Cambiar contraseña del usuario
+      tags: 
+        - Users
+      parameters:
+        - name: emailUser
+          in: body
+          required: true
+          type: string
+          description: email del usuario
+        - name: newPassword
+          in: body
+          required: true
+          type: string
+          description: Nueva contraseña
+        - name: repeatPassword
+          in: body
+          required: true
+          type: string
+          description: Se pide otra vez la contraseña para verificar que no se equivoque
+      responses:
+        "200":
+          description: Exito al obtener los parametros para el cambio de contraseña, cambia el valor de req.session.email a un string vacio para no tener el email del usuario en el sistema. Redirige a la ruta '/session'
+        "400":
+          description: Error al obtener los parametros para el cambio de contraseña o las contraseñas no coinciden, esto puede pasar por no ingresar la informacion adecuada o tiempo de expiracion caducado. Redirige a la ruta '/changePass'
+
+  /api/user/sendEmail:
+    post: 
+      summary: Envio de email para cambio de contraseña
+      tags:
+        - Users
+      parameters: 
+        - name: Email
+          in: body
+          required: true
+          type: String
+          description: Email del usuario destino
+      responses:
+        "200": 
+          description: Correcto envio de email y se inicia el tiempo de expiracion del cambio de contraseña, redirige a la ruta '/session'
+        "400":
+          description: Error al enviar email, posibles causas no escribir su email o errores internos del servidor. Redirige a la ruta '/ChangePass'
+
+  /api/user/profile:  
+    post:
+      summary: Cambiar foto de perfil del usuario logueado
+      tags:
+        - Users
+      parameters:   
+        - name: User
+          in: session
+          required: true
+          type: string
+          description: Id del usuario
+        - name: file
+          in: file
+          required: true
+          type: file
+          description: Imagen de la foto de perfil
+      responses: 
+        "200":
+          description: Exito en el cambio de foto de perfil y redirige a la ruta '/profile'
+        "400":
+          description: Error al obtener la imagen para cambiar la foto de perfil, esto puede suceder por un error interno del servidor o el archivo no es compatible.
+
+    
+  /api/user/document:
+    post: 
+      summary: Subir documentos
+      tags: 
+        - Users
+      parameters:   
+        - name: User
+          in: session
+          required: true
+          type: string
+          description: Id del usuario
+        - name: file
+          in: files
+          required: true
+          type: file
+          description: Imagen de la foto de perfil
+      responses:
+        "200":
+          description: Exito en la obtencion de parametros, sube los documentos y redirige a la ruta '/profile'
+        "400":
+          description: Error al subir los documentos al servidor, posibles causas ninguno documento subido, documento/s incompatible/s o error interno del servidor. Redirige a la ruta '/profile'
+
+  
+  /api/user/auth/google:
+    get: 
+      summary: Loguear o registrar a un usuario con google
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Exito en el registro o logueo del usuario y redirige a la ruta '/api/user/auth/google/callback'
+        "400":
+          description: Error en el registro o logueo del usuario, posibles causas un error interno de passport o en la logica del resgitro dentro de passport. Redirige a la ruta '/session'
+
+    
+  /api/user/auth/google/callback:
+    get: 
+      summary: Callback del logueo o registro del usuario con google
+      tags: 
+        - Users
+      parameter:
+        - name: user
+          in: req
+          required: true
+          type: String
+          description: Informacion de usuario 
+      responses: 
+        "200":
+          description: Exito en obtener la informacion del usuario, guarda informacion y redirige a la ruta '/home'
+        "400":
+          description: Error al obtener la informacion del usuario posibles causas error interno en el servidor y redirige a la ruta '/session'
+
+          
+  /api/user/auth/github:
+    get: 
+      summary: Loguear o registrar a un usuario con github
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Exito en el registro o logueo del usuario y redirige a la ruta '/api/user/auth/github/callback'
+        "400":
+          description: Error en el registro o logueo del usuario, posibles causas un error interno de passport o en la logica del resgitro dentro de passport. Redirige a la ruta '/session'
+
+    
+  /api/user/auth/github/callback:
+    get: 
+      summary: Callback del logueo o registro del usuario con github
+      tags: 
+        - Users
+      parameter:
+        - name: user
+          in: req
+          required: true
+          type: String
+          description: Informacion de usuario 
+      responses: 
+        "200":
+          description: Exito en obtener la informacion del usuario, guarda informacion y redirige a la ruta '/home'
+        "400":
+          description: Error al obtener la informacion del usuario posibles causas error interno en el servidor y redirige a la ruta '/session'
