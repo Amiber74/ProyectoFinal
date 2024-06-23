@@ -1,6 +1,7 @@
 import { cartServices } from "../services/cartServices.js";
 import { userServices } from "../services/userServices.js";
 import { productServices } from "../services/productServices.js";
+import { ticketServices } from "../services/ticketServices.js";
 import { expect } from "chai";
 import config from "../config/config.js";
 import mongoose from "mongoose";
@@ -9,6 +10,7 @@ import mongoose from "mongoose";
 mongoose.connect(config.mongoUrlTest)
 
 describe('Testing de services',  () => {
+
     
     describe('Test de usuarios', () => {
         const US = new userServices()

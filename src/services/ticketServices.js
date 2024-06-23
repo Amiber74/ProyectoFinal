@@ -3,7 +3,7 @@ import {cartServices} from './cartServices.js'
 import {v4 as uuidv4} from 'uuid'
 import moment from 'moment'
 import {productServices} from './productServices.js'
-import { HandleErr } from './errors/productErr.js'
+import { HandleErr, ValidationError } from './errors/productErr.js'
 import { userServices } from './userServices.js'
 
 const US = new userServices()
@@ -46,7 +46,7 @@ export class ticketServices {
                 purchase_datetime: moment().format('DD-MM-YYY HH:mm:ss'),
                 amount
             }
-
+            console.log(newTicket)
             await CS.updateProduct(Cid, productsFails)
 
             const result = await ticketModel.create(newTicket)

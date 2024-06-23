@@ -44,7 +44,7 @@ export class cartServices {
     async getCart (Cid){
         try {
             if(!Cid){ throw new ValidationError('Campo sin completar')}
-            // console.log(Cid)
+            
             const result = await cartModel.findOne({_id:Cid}).populate({path:'products.product'}).lean()
             
             if(!result){ throw new CartNotFoundError('Error al encontrar el carrito')}

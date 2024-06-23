@@ -51,7 +51,7 @@ app.use(cookieParser(config.cookieKey))
 app.use(session({
     store: MongoStore.create({
         mongoUrl: config.mongoUrl,
-        ttl:30
+        ttl:30*60 *1000
     }),
     secret: config.mongoKey,
     resave: true,
@@ -74,9 +74,8 @@ app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/ticket', ticketRouter)
 
-
-
 const PORT = config.port || 8080
+
 app.listen( config.port, () => {
     logger.info(`Servidor levantado en el puerto ${PORT}`)
 })

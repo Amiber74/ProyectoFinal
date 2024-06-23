@@ -16,6 +16,6 @@ route.get('/profile', controller.controllerProfile)
 
 route.get('/changePass', controller.controllerChangePass)
 
-
+route.get('/chat', controller.controllerChat)
 
 export default route

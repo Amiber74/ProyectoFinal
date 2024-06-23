@@ -8,7 +8,6 @@ const PS = new productServices()
 const CS = new cartServices()
 const US = new userServices()
 
-
 export class viewController {
 
     ReqFlash = (req, res) => {
@@ -125,4 +124,10 @@ export class viewController {
             backgrounColor: msg.color
         })
     }
+
+    controllerChat = async (req, res) => {
+        const chat = await Chs.getChat()
+        res.render('chat', {chat})
+    }
+
 }
