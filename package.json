@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
     "test": "mocha src/test/services.test.js"
   },
   "keywords": [],
