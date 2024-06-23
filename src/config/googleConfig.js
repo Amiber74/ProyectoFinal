@@ -32,7 +32,6 @@ const initializeGoogle = () => {
 
                 return done (null, result)
             } catch(err) {
-                console.log(err)
                 return done('Error al loguearse con Google')
             }
         }

@@ -1,22 +1,9 @@
 import { Router } from "express";
-import {ticketServices} from '../services/ticketServices.js'
-
+import { ControllerTicket } from "../controller/ticketController.js";
 
 const route = Router()
-const TS = new ticketServices()
+const controller = new ControllerTicket()
 
-route.post('/purchase', async (req, res) => {
-    const {user, cart} = req.session
-    const result = await TS.createTicket(cart, user)
-    
-    if(result){
-        req.flash('info', 'Si algun producto sigue en el carrito es debido a que no hay stock suficiente')
-        res.redirect('/cart')
-    }else{
-        req.flash('failMessage', 'Error al crear el ticket')
-        res.redirect('/cart')
-    }
-
-})
+route.post('/purchase', controller.newTicket)
 
 export default route

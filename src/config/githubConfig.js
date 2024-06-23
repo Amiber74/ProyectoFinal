@@ -33,7 +33,6 @@ const initializeGitHub = () => {
                 )
                 return done(null, newUser)
             } catch(err) {
-                console.log(err)
                 return done('Error al loguearse con Github')
             }
 

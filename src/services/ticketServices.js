@@ -5,6 +5,7 @@ import moment from 'moment'
 import {productServices} from './productServices.js'
 import { HandleErr, ValidationError } from './errors/productErr.js'
 import { userServices } from './userServices.js'
+import { transport } from '../utils/transportEmail.js'
 
 const US = new userServices()
 const CS = new cartServices()
@@ -28,7 +29,7 @@ export class ticketServices {
             let amount = 0
 
             for (let i = 0; i < cart.products.length; i++) {
-                const stock =await PS.updateStock(cart.products[i].product._id, cart.products[i].quantity)
+                const stock = await PS.updateStock(cart.products[i].product._id, cart.products[i].quantity)
 
                 if(stock.status){
                     amount = amount + (cart.products[i].product.price * cart.products[i].quantity)
@@ -46,10 +47,10 @@ export class ticketServices {
                 purchase_datetime: moment().format('DD-MM-YYY HH:mm:ss'),
                 amount
             }
-            console.log(newTicket)
+
             await CS.updateProduct(Cid, productsFails)
 
-            const result = await ticketModel.create(newTicket)
+            const result = await ticketModel.create(newTicket).lean()
 
             return result
         } catch(err) {
